@@ -26,7 +26,7 @@ public class ExampleUnitTest {
     }
 
     @Test
-    public void  getCategoryName() throws IOException {
+    public void getCategoryName() throws IOException {
         FakeApiService service = new FakeApi().createFakeApiService();
         Call<List<String>> call = service.fetchCategories();
         List<String> categories = call.execute().body();
@@ -36,12 +36,21 @@ public class ExampleUnitTest {
     }
 
     @Test
-    public void  getProducts() throws IOException {
+    public void getProducts() throws IOException {
         FakeApiService service = new FakeApi().createFakeApiService();
         Call<List<Product>> call = service.getProducts("electronics");
         List<Product> products = call.execute().body();
         assertNotNull(products);
         assertFalse(products.isEmpty());
         System.out.println(new Gson().toJson(products));
+    }
+
+    @Test
+    public void getProductData() throws IOException {
+        FakeApiService service = new FakeApi().createFakeApiService();
+        Call<Product> call = service.fetchProductDetails(1);
+        Product product = call.execute().body();
+        assertNotNull(product);
+        System.out.println(new Gson().toJson(product));
     }
 }

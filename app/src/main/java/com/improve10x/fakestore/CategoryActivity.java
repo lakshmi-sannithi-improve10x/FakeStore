@@ -4,12 +4,15 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import com.improve10x.fakestore.databinding.ActivityCategoryBinding;
+import com.improve10x.fakestore.models.Product;
 import com.improve10x.fakestore.network.FakeApi;
 import com.improve10x.fakestore.network.FakeApiService;
+import com.improve10x.fakestore.network.OnServiceActionListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CategoryActivity extends AppCompatActivity {
+public class CategoryActivity extends AppCompatActivity implements OnServiceActionListener {
    private ActivityCategoryBinding binding;
 
    private ArrayList<String> categories = new ArrayList<>();
@@ -60,5 +63,13 @@ public class CategoryActivity extends AppCompatActivity {
 
     private void setupAdapter() {
         adapter = new CategoriesAdapter(categories);
+        adapter.setOnServiceActionListener(this);
+    }
+
+    @Override
+    public void onCategoryClick(String category) {
+        Intent intent = new Intent(this,ProductsActivity.class);
+        intent.putExtra("category",category);
+        startActivity(intent);
     }
 }

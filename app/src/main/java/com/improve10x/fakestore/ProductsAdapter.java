@@ -8,16 +8,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.improve10x.fakestore.databinding.ProductItemBinding;
 import com.improve10x.fakestore.models.Product;
+import com.improve10x.fakestore.network.OnProductActionListener;
 import com.squareup.picasso.Picasso;
 
-public class ProductsAdapter extends RecyclerView.Adapter<ProductViewHolder> {
-    private Product[] products;
+import java.util.List;
 
-    public ProductsAdapter(Product[] products){
+public class ProductsAdapter extends RecyclerView.Adapter<ProductViewHolder> {
+    private List<Product> products;
+    private OnProductActionListener listener;
+
+    void setProductListener(OnProductActionListener listener){
+        this.listener = listener;
+    }
+
+    public ProductsAdapter(List<Product> products){
         this.products = products;
     }
 
-    void updateData(Product[] products){
+    void updateData(List<Product> products){
         this.products = products;
         notifyDataSetChanged();
     }
@@ -32,16 +40,20 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
-        Product product = products[position];
+        Product product = products.get(position);
         holder.binding.titleTxt.setText(product.getTitle());
-        holder.binding.ratingRb.setRating(product.getRating().getRate());
-        holder.binding.countTxt.setText(product.getRating().getCount());
+        holder.binding.ratingRb.setRating(Float.parseFloat(String.valueOf(product.getRating().getRate())));
+        holder.binding.countTxt.setText(String.valueOf(product.getRating().getCount()));
         holder.binding.priceTxt.setText(String.valueOf(product.getPrice()));
+        holder.binding.rateTxt.setText(String.valueOf(product.getRating().getRate()));
         Picasso.get().load(product.getImageUrl()).into(holder.binding.imageIv);
+        holder.binding.getRoot().setOnClickListener(view -> {
+            listener.onProductClick(product.getId());
+        });
     }
 
     @Override
     public int getItemCount() {
-        return products.length;
+        return products.size();
     }
 }
