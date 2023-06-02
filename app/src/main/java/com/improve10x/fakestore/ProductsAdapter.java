@@ -8,32 +8,33 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.improve10x.fakestore.databinding.ProductItemBinding;
 import com.improve10x.fakestore.models.Product;
-import com.improve10x.fakestore.network.OnProductActionListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class ProductsAdapter extends RecyclerView.Adapter<ProductViewHolder> {
     private List<Product> products;
-    private OnProductActionListener listener;
+    private OnItemActionListener actionListener;
 
-    void setProductListener(OnProductActionListener listener){
-        this.listener = listener;
+    void setProductListener(OnItemActionListener listener) {
+        this.actionListener = listener;
     }
 
-    public ProductsAdapter(List<Product> products){
+    //TODO: setDataAdapter
+    public ProductsAdapter(List<Product> products) {
         this.products = products;
     }
 
-    void updateData(List<Product> products){
+    void updateData(List<Product> products) {
         this.products = products;
         notifyDataSetChanged();
     }
+
     @NonNull
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        ProductItemBinding binding = ProductItemBinding.inflate(inflater,parent,false);
+        ProductItemBinding binding = ProductItemBinding.inflate(inflater, parent, false);
         ProductViewHolder viewHolder = new ProductViewHolder(binding);
         return viewHolder;
     }
@@ -48,7 +49,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductViewHolder> {
         holder.binding.rateTxt.setText(String.valueOf(product.getRating().getRate()));
         Picasso.get().load(product.getImageUrl()).into(holder.binding.imageIv);
         holder.binding.getRoot().setOnClickListener(view -> {
-            listener.onProductClick(product.getId());
+            actionListener.onClick(product.getId());
         });
     }
 

@@ -9,17 +9,18 @@ import android.os.Handler;
 import com.improve10x.fakestore.databinding.ActivitySplashBinding;
 
 public class SplashActivity extends AppCompatActivity {
-        ActivitySplashBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivitySplashBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        setContentView(R.layout.activity_splash);
         getSupportActionBar().hide();
         Handler handler = new Handler();
         handler.postDelayed(() -> {
-            Intent intent = new Intent(this, CategoryActivity.class);
+            Intent intent = new Intent(this, CategoriesActivity.class);
             startActivity(intent);
-        },3000);
+        },2000);
     }
 }
+//TODO: create constants class,create packages,use single responsbility
+//TODO: progress bar

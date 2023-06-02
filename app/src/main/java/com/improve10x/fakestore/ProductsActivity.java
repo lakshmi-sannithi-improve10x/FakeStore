@@ -1,6 +1,5 @@
 package com.improve10x.fakestore;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 
@@ -12,7 +11,6 @@ import com.improve10x.fakestore.databinding.ActivityProductsBinding;
 import com.improve10x.fakestore.models.Product;
 import com.improve10x.fakestore.network.FakeApi;
 import com.improve10x.fakestore.network.FakeApiService;
-import com.improve10x.fakestore.network.OnProductActionListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +20,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class ProductsActivity extends AppCompatActivity implements OnProductActionListener {
+public class ProductsActivity extends BaseActivity implements OnItemActionListener {
     private ActivityProductsBinding binding;
     private List<Product> products = new ArrayList<>();
+    private String category;
     private ProductsAdapter adapter;
 
     @Override
@@ -32,22 +31,20 @@ public class ProductsActivity extends AppCompatActivity implements OnProductActi
         super.onCreate(savedInstanceState);
         binding = ActivityProductsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Products");
+        getSupportActionBar().setTitle("Products");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Intent intent = getIntent();
-        String category = intent.getStringExtra("category");
+        category = intent.getStringExtra("category");
         setupAdapter();
-        connectAdapter();
+        setupProductsRv();
         productsApi(category);
     }
 
     private void productsApi(String category) {
-        FakeApiService service = new FakeApi().createFakeApiService();
         Call<List<Product>> call = service.getProducts(category);
         call.enqueue(new Callback<List<Product>>() {
             @Override
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
-                Toast.makeText(ProductsActivity.this, "Success", Toast.LENGTH_SHORT).show();
                 adapter.updateData(response.body());
             }
 
@@ -58,8 +55,8 @@ public class ProductsActivity extends AppCompatActivity implements OnProductActi
         });
     }
 
-    private void connectAdapter() {
-        binding.productsRv.setLayoutManager(new GridLayoutManager(this,2));
+    private void setupProductsRv() {
+        binding.productsRv.setLayoutManager(new GridLayoutManager(this, 2));
         binding.productsRv.setAdapter(adapter);
     }
 
@@ -69,9 +66,9 @@ public class ProductsActivity extends AppCompatActivity implements OnProductActi
     }
 
     @Override
-    public void onProductClick(int productId) {
+    public void onClick(int productId) {
         Intent intent = new Intent(this, ProductDetailsActivity.class);
-        intent.putExtra("id",productId);
+        intent.putExtra("id", productId);
         startActivity(intent);
     }
 }

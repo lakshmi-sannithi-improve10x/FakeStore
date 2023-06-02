@@ -19,7 +19,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ProductDetailsActivity extends AppCompatActivity {
+public class ProductDetailsActivity extends BaseActivity {
    private ActivityProductDetailsBinding binding;
 
     @Override
@@ -27,29 +27,25 @@ public class ProductDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityProductDetailsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("ProductDetails");
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("ProductDetails");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Intent intent = getIntent();
         int id = intent.getIntExtra("id", 0);
         getProductDetails(id);
     }
 
     private void getProductDetails(int id) {
-        FakeApiService service = new FakeApi().createFakeApiService();
         Call<Product> call = service.fetchProductDetails(id);
         call.enqueue(new Callback<Product>() {
             @Override
             public void onResponse(Call<Product> call, Response<Product> response) {
-                Toast.makeText(ProductDetailsActivity.this, "Success", Toast.LENGTH_SHORT).show();
                 Product product = response.body();
                 binding.titleTxt.setText(product.getTitle());
                 binding.ratingRb.setRating(product.getRating().getRate());
                 binding.rateTxt.setText(String.valueOf(product.getRating().getRate()));
                 binding.countTxt.setText(String.valueOf(product.getRating().getCount()));
                 binding.descriptionTxt.setText(product.getDescription());
-                binding.costTxt.setText(String.valueOf(product.getPrice()));
-                binding.categoryTxt.setText(product.getCategory());
+                binding.priceTxt.setText(String.valueOf(product.getPrice()));
                 Picasso.get().load(product.getImageUrl()).into(binding.imageIv);
             }
 

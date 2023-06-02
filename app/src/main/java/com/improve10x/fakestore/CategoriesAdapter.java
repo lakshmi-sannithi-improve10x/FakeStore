@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.improve10x.fakestore.databinding.CategoryItemBinding;
-import com.improve10x.fakestore.network.OnServiceActionListener;
 
 import java.util.List;
 
@@ -20,12 +19,12 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoryViewHolder> 
         this.categories = categories;
     }
 
-    void updateData(List<String> categories){
+    void updateData(List<String> categories) {
         this.categories = categories;
         notifyDataSetChanged();
     }
 
-    void setOnServiceActionListener(OnServiceActionListener listener){
+    void setOnServiceActionListener(OnServiceActionListener listener) {
         this.listener = listener;
     }
 
@@ -41,9 +40,9 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoryViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
         String category = categories.get(position);
-        holder.binding.categoryitemTxt.setText(category);
-        holder.binding.categoryitemTxt.setOnClickListener(view -> {
-            listener.onCategoryClick(category);
+        holder.binding.categorynameTxt.setText(category);
+        holder.binding.categorynameTxt.setOnClickListener(view -> {
+            listener.onClick(category);
         });
     }
 
