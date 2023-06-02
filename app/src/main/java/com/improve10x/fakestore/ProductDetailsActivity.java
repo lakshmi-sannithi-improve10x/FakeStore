@@ -20,7 +20,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ProductDetailsActivity extends AppCompatActivity {
-    ActivityProductDetailsBinding binding;
+   private ActivityProductDetailsBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
