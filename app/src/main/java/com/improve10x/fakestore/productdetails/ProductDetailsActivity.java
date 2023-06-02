@@ -1,19 +1,12 @@
-package com.improve10x.fakestore;
-
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
+package com.improve10x.fakestore.productdetails;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.improve10x.fakestore.databinding.ActivityProductDetailsBinding;
+import com.improve10x.fakestore.BaseActivity;
 import com.improve10x.fakestore.models.Product;
-import com.improve10x.fakestore.network.FakeApi;
-import com.improve10x.fakestore.network.FakeApiService;
 import com.squareup.picasso.Picasso;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;

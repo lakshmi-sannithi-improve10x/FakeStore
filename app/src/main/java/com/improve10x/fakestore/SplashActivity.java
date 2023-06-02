@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.improve10x.fakestore.databinding.ActivitySplashBinding;
+import com.improve10x.fakestore.category.CategoriesActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -22,5 +22,3 @@ public class SplashActivity extends AppCompatActivity {
         },2000);
     }
 }
-//TODO: create constants class,create packages,use single responsbility
-//TODO: progress bar

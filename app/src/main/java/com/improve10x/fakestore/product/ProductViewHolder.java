@@ -1,4 +1,4 @@
-package com.improve10x.fakestore;
+package com.improve10x.fakestore.product;
 
 import android.view.View;
 

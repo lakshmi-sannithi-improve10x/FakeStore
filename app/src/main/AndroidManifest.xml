@@ -23,13 +23,13 @@
         </intent-filter>
         </activity>
         <activity
-            android:name=".ProductDetailsActivity"
+            android:name=".productdetails.ProductDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".ProductsActivity"
+            android:name=".product.ProductsActivity"
             android:exported="false" />
         <activity
-            android:name=".CategoriesActivity"
+            android:name=".category.CategoriesActivity"
             android:exported="true">
                     </activity>
     </application>

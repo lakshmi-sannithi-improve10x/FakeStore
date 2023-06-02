@@ -1,4 +1,4 @@
-package com.improve10x.fakestore;
+package com.improve10x.fakestore.category;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;

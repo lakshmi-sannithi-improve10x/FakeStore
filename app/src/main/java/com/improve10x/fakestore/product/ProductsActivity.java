@@ -1,16 +1,15 @@
-package com.improve10x.fakestore;
+package com.improve10x.fakestore.product;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.improve10x.fakestore.BaseActivity;
+import com.improve10x.fakestore.productdetails.ProductDetailsActivity;
 import com.improve10x.fakestore.databinding.ActivityProductsBinding;
 import com.improve10x.fakestore.models.Product;
-import com.improve10x.fakestore.network.FakeApi;
-import com.improve10x.fakestore.network.FakeApiService;
 
 import java.util.ArrayList;
 import java.util.List;
