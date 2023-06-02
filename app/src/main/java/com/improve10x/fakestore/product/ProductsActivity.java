@@ -36,7 +36,6 @@ public class ProductsActivity extends BaseActivity implements OnItemActionListen
         category = intent.getStringExtra("category");
         setupAdapter();
         setupProductsRv();
-        productsApi(category);
     }
 
     private void productsApi(String category) {
@@ -69,5 +68,11 @@ public class ProductsActivity extends BaseActivity implements OnItemActionListen
         Intent intent = new Intent(this, ProductDetailsActivity.class);
         intent.putExtra("id", productId);
         startActivity(intent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        productsApi(category);
     }
 }

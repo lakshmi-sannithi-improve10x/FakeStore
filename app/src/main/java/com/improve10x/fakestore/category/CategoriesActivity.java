@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.improve10x.fakestore.BaseActivity;
+import com.improve10x.fakestore.databinding.ActivityCategoriesBinding;
 import com.improve10x.fakestore.product.ProductsActivity;
 
 import java.util.ArrayList;
@@ -19,9 +20,7 @@ import retrofit2.Response;
 public class CategoriesActivity extends BaseActivity implements OnServiceActionListener {
 
     private ActivityCategoriesBinding binding;
-
     private ArrayList<String> categories = new ArrayList<>();
-
     private CategoriesAdapter adapter;
 
     @Override

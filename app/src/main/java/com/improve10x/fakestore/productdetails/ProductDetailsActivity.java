@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.improve10x.fakestore.BaseActivity;
+import com.improve10x.fakestore.databinding.ActivityProductDetailsBinding;
 import com.improve10x.fakestore.models.Product;
 import com.squareup.picasso.Picasso;
 
@@ -23,7 +24,7 @@ public class ProductDetailsActivity extends BaseActivity {
         getSupportActionBar().setTitle("ProductDetails");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Intent intent = getIntent();
-        int id = intent.getIntExtra("id", 0);
+         int id = intent.getIntExtra("id", 0);
         getProductDetails(id);
     }
 
