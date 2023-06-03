@@ -9,14 +9,13 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 public interface FakeApiService {
-    //TODO: constants
 
-    @GET("products/categories")
+    @GET("api/v1/categories")
     Call<List<String>> fetchCategories();
 
-    @GET("products/category/{categoryName}")
-    Call<List<Product>>  getProducts(@Path("categoryName") String categoryName);
+    //@GET("products/category/{categoryName}")
+   // Call<List<Product>>  getProducts(@Path("categoryName") String categoryName);
 
-    @GET("products/{productId}")
-    Call<Product> fetchProductDetails(@Path("productId") int productId);
+   // @GET("products/{productId}")
+    //Call<Product> fetchProductDetails(@Path("productId") int productId);
 }
