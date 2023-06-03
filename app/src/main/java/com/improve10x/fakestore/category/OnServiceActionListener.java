@@ -1,6 +1,5 @@
 package com.improve10x.fakestore.category;
 
-public interface OnServiceActionListener {
-//TODO: onclick
+public interface OnServiceActionListener{
     void onClick(String category);
 }
