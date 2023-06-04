@@ -18,7 +18,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CategoriesActivity extends BaseActivity  {
+public class CategoriesActivity extends BaseActivity {
 
     private ActivityCategoriesBinding binding;
     private ArrayList<Product> products = new ArrayList<>();
@@ -36,15 +36,12 @@ public class CategoriesActivity extends BaseActivity  {
     }
 
 
-
-
-
     private void getApi() {
         Call<List<Product>> call = service.fetchCategories();
         call.enqueue(new Callback<List<Product>>() {
-         @Override
-        public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
-              adapter.updateData(response.body());
+            @Override
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                adapter.updateData(response.body());
             }
 
             @Override

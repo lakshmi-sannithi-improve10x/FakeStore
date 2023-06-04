@@ -16,7 +16,6 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoryViewHolder> 
 
     private List<Product> products;
 
-
     public CategoriesAdapter(List<Product> products) {
         this.products = products;
     }
@@ -39,9 +38,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoryViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
         Product product = products.get(position);
-        holder.binding.productidTxt.setText(String.valueOf(product.getId()));
         holder.binding.nameTxt.setText(product.getName());
-        Picasso.get().load(product.getImage()).into(holder.binding.imageIv);
         // holder.binding.categorynameTxt.setOnClickListener(view -> {
         // listener.onClick(category);
         // });
