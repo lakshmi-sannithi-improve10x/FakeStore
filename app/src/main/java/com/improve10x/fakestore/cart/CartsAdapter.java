@@ -47,10 +47,10 @@ public class CartsAdapter extends RecyclerView.Adapter<CartViewHolder> {
             holder.binding.removeBtn.setVisibility(View.VISIBLE);
             holder.binding.quantityTxt.setVisibility(View.VISIBLE);
         }
-    }
+   }
 
     @Override
-    public int getItemCount() {
+   public int getItemCount() {
         return cartProducts.size();
     }
 }

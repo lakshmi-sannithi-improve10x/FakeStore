@@ -11,6 +11,15 @@ public class Product implements Serializable {
     private List<String> images;
     private String title;
     private Float price;
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public Float getPrice() {
         return price;
