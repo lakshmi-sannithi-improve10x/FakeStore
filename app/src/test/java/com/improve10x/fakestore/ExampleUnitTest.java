@@ -39,7 +39,7 @@ public class ExampleUnitTest {
     @Test
     public void getProducts() throws IOException {
         FakeApiService service = new FakeApi().createFakeApiService();
-        Call<List<Product>> call = service.getProducts("electronics");
+        Call<List<Product>> call = service.getProducts(1);
         List<Product> products = call.execute().body();
         assertNotNull(products);
         assertFalse(products.isEmpty());

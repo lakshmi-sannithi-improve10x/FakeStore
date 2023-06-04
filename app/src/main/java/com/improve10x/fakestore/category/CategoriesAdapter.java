@@ -15,10 +15,11 @@ import java.util.List;
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoryViewHolder> {
 
     private List<Product> products;
-    //private OnServiceActionListener listener;
-    //void setActionListener(OnServiceActionListener listener){
-       // this.listener =listener;
-   // }
+    private OnServiceActionListener listener;
+
+    void setActionListener(OnServiceActionListener listener) {
+        this.listener = listener;
+    }
 
     public CategoriesAdapter(List<Product> products) {
         this.products = products;
@@ -43,9 +44,9 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoryViewHolder> 
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
         Product product = products.get(position);
         holder.binding.nameTxt.setText(product.getName());
-        // holder.binding.categorynameTxt.setOnClickListener(view -> {
-        // listener.onClick(category);
-        // });
+        holder.binding.nameTxt.setOnClickListener(view -> {
+            listener.onClick(product);
+        });
     }
 
     @Override

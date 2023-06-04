@@ -22,7 +22,7 @@ import retrofit2.Response;
 public class ProductsActivity extends BaseActivity implements OnItemActionListener {
     private ActivityProductsBinding binding;
     private List<Product> products = new ArrayList<>();
-    private String category;
+    private Product product;
     private ProductsAdapter adapter;
 
     @Override
@@ -33,16 +33,16 @@ public class ProductsActivity extends BaseActivity implements OnItemActionListen
         getSupportActionBar().setTitle("Products");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Intent intent = getIntent();
-        category = intent.getStringExtra("category");
+        product = (Product) intent.getSerializableExtra("product");
         setupAdapter();
         setupProductsRv();
     }
 
-    private void productsApi(String category) {
-        Call<List<Product>> call = service.getProducts(category);
+    private void productsApi(Product product) {
+        Call<List<Product>> call = service.getProducts(product.getId());
         call.enqueue(new Callback<List<Product>>() {
             @Override
-            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+           public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                 adapter.updateData(response.body());
             }
 
@@ -73,6 +73,6 @@ public class ProductsActivity extends BaseActivity implements OnItemActionListen
     @Override
     protected void onResume() {
         super.onResume();
-        productsApi(category);
+        productsApi(product);
     }
 }

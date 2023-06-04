@@ -18,7 +18,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CategoriesActivity extends BaseActivity  {
+public class CategoriesActivity extends BaseActivity implements OnServiceActionListener {
 
     private ActivityCategoriesBinding binding;
     private ArrayList<Product> products = new ArrayList<>();
@@ -47,7 +47,6 @@ public class CategoriesActivity extends BaseActivity  {
             @Override
             public void onFailure(Call<List<Product>> call, Throwable t) {
                 Toast.makeText(CategoriesActivity.this, "failure", Toast.LENGTH_SHORT).show();
-
             }
         });
     }
@@ -59,13 +58,13 @@ public class CategoriesActivity extends BaseActivity  {
 
     private void setupCategoriesRv() {
         adapter = new CategoriesAdapter(products);
+        adapter.setActionListener(this);
     }
 
-   // @Override
-   // public void onClick(Product product) {
-       // Intent intent = new Intent(this, ProductsActivity.class);
-        //intent.putExtra("category",categoryName);
-        //startActivity(intent);
-
-   // }
+    @Override
+    public void onClick(Product product) {
+        Intent intent = new Intent(this, ProductsActivity.class);
+        intent.putExtra("product", product);
+        startActivity(intent);
+    }
 }
