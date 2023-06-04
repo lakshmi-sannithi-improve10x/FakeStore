@@ -18,7 +18,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CategoriesActivity extends BaseActivity {
+public class CategoriesActivity extends BaseActivity  {
 
     private ActivityCategoriesBinding binding;
     private ArrayList<Product> products = new ArrayList<>();
@@ -60,4 +60,12 @@ public class CategoriesActivity extends BaseActivity {
     private void setupCategoriesRv() {
         adapter = new CategoriesAdapter(products);
     }
+
+   // @Override
+   // public void onClick(Product product) {
+       // Intent intent = new Intent(this, ProductsActivity.class);
+        //intent.putExtra("category",categoryName);
+        //startActivity(intent);
+
+   // }
 }

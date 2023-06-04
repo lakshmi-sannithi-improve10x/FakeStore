@@ -15,6 +15,10 @@ import java.util.List;
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoryViewHolder> {
 
     private List<Product> products;
+    //private OnServiceActionListener listener;
+    //void setActionListener(OnServiceActionListener listener){
+       // this.listener =listener;
+   // }
 
     public CategoriesAdapter(List<Product> products) {
         this.products = products;
