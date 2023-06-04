@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.improve10x.fakestore.models.CartProduct;
 import com.improve10x.fakestore.databinding.CartItemBinding;
+import com.improve10x.fakestore.models.Product;
 
 import java.util.List;
 

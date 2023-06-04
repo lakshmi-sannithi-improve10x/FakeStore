@@ -42,12 +42,12 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         Product product = products.get(position);
-        holder.binding.titleTxt.setText(product.getTitle());
-        holder.binding.ratingRb.setRating(Float.parseFloat(String.valueOf(product.getRating().getRate())));
-        holder.binding.countTxt.setText(String.valueOf(product.getRating().getCount()));
-        holder.binding.priceTxt.setText(String.valueOf(product.getPrice()));
-        holder.binding.rateTxt.setText(String.valueOf(product.getRating().getRate()));
-        Picasso.get().load(product.getImageUrl()).into(holder.binding.imageIv);
+       // holder.binding.titleTxt.setText(product.getTitle());
+       // holder.binding.ratingRb.setRating(Float.parseFloat(String.valueOf(product.getRating().getRate())));
+      //  holder.binding.countTxt.setText(String.valueOf(product.getRating().getCount()));
+       // holder.binding.priceTxt.setText(String.valueOf(product.getPrice()));
+        //holder.binding.rateTxt.setText(String.valueOf(product.getRating().getRate()));
+        //Picasso.get().load(product.getImageUrl()).into(holder.binding.imageIv);
         holder.binding.getRoot().setOnClickListener(view -> {
             actionListener.onClick(product.getId());
         });

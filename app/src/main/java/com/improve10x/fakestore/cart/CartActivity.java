@@ -51,8 +51,6 @@ public class CartActivity extends BaseActivity {
 
     private void setupAdapter() {
         adapter = new CartsAdapter(cartProducts);
-
-
     }
 
     private void connectAdapter() {

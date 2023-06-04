@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.improve10x.fakestore.BaseActivity;
 import com.improve10x.fakestore.databinding.ActivityCategoriesBinding;
+import com.improve10x.fakestore.models.Product;
 import com.improve10x.fakestore.product.ProductsActivity;
 
 import java.util.ArrayList;
@@ -17,10 +18,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CategoriesActivity extends BaseActivity implements OnServiceActionListener {
+public class CategoriesActivity extends BaseActivity  {
 
     private ActivityCategoriesBinding binding;
-    private ArrayList<String> categories = new ArrayList<>();
+    private ArrayList<Product> products = new ArrayList<>();
     private CategoriesAdapter adapter;
 
     @Override
@@ -35,17 +36,21 @@ public class CategoriesActivity extends BaseActivity implements OnServiceActionL
     }
 
 
+
+
+
     private void getApi() {
-        Call<List<String>> call = service.fetchCategories();
-        call.enqueue(new Callback<List<String>>() {
-            @Override
-            public void onResponse(Call<List<String>> call, Response<List<String>> response) {
-                adapter.updateData(response.body());
+        Call<List<Product>> call = service.fetchCategories();
+        call.enqueue(new Callback<List<Product>>() {
+         @Override
+        public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+              adapter.updateData(response.body());
             }
 
             @Override
-            public void onFailure(Call<List<String>> call, Throwable t) {
+            public void onFailure(Call<List<Product>> call, Throwable t) {
                 Toast.makeText(CategoriesActivity.this, "failure", Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -56,14 +61,6 @@ public class CategoriesActivity extends BaseActivity implements OnServiceActionL
     }
 
     private void setupCategoriesRv() {
-        adapter = new CategoriesAdapter(categories);
-        adapter.setOnServiceActionListener(this);
-    }
-
-    @Override
-    public void onClick(String category) {
-        Intent intent = new Intent(this, ProductsActivity.class);
-        intent.putExtra("category", category);
-        startActivity(intent);
+        adapter = new CategoriesAdapter(products);
     }
 }

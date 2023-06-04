@@ -7,26 +7,25 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.improve10x.fakestore.databinding.CategoryItemBinding;
+import com.improve10x.fakestore.models.Product;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoryViewHolder> {
 
-    private List<String> categories;
-    private OnServiceActionListener listener;
+    private List<Product> products;
 
-    public CategoriesAdapter(List<String> categories) {
-        this.categories = categories;
+
+    public CategoriesAdapter(List<Product> products) {
+        this.products = products;
     }
 
-    void updateData(List<String> categories) {
-        this.categories = categories;
+    void updateData(List<Product> products) {
+        this.products = products;
         notifyDataSetChanged();
     }
 
-    void setOnServiceActionListener(OnServiceActionListener listener) {
-        this.listener = listener;
-    }
 
     @NonNull
     @Override
@@ -39,15 +38,17 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoryViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
-        String category = categories.get(position);
-        holder.binding.categorynameTxt.setText(category);
-        holder.binding.categorynameTxt.setOnClickListener(view -> {
-            listener.onClick(category);
-        });
+        Product product = products.get(position);
+        holder.binding.productidTxt.setText(String.valueOf(product.getId()));
+        holder.binding.nameTxt.setText(product.getName());
+        Picasso.get().load(product.getImage()).into(holder.binding.imageIv);
+        // holder.binding.categorynameTxt.setOnClickListener(view -> {
+        // listener.onClick(category);
+        // });
     }
 
     @Override
     public int getItemCount() {
-        return categories.size();
+        return products.size();
     }
 }

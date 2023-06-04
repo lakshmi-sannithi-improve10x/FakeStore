@@ -34,13 +34,13 @@ public class ProductDetailsActivity extends BaseActivity {
             @Override
             public void onResponse(Call<Product> call, Response<Product> response) {
                 Product product = response.body();
-                binding.titleTxt.setText(product.getTitle());
-                binding.ratingRb.setRating(product.getRating().getRate());
+               // binding.titleTxt.setText(product.getTitle());
+                /*binding.ratingRb.setRating(product.getRating().getRate());
                 binding.rateTxt.setText(String.valueOf(product.getRating().getRate()));
                 binding.countTxt.setText(String.valueOf(product.getRating().getCount()));
                 binding.descriptionTxt.setText(product.getDescription());
                 binding.priceTxt.setText(String.valueOf(product.getPrice()));
-                Picasso.get().load(product.getImageUrl()).into(binding.imageIv);
+                Picasso.get().load(product.getImageUrl()).into(binding.imageIv);*/
             }
 
             @Override

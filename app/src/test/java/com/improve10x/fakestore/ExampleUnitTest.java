@@ -29,11 +29,11 @@ public class ExampleUnitTest {
     @Test
     public void getCategoryName() throws IOException {
         FakeApiService service = new FakeApi().createFakeApiService();
-        Call<List<String>> call = service.fetchCategories();
-        List<String> categories = call.execute().body();
-        assertNotNull(categories);
-        assertFalse(categories.isEmpty());
-        System.out.println(new Gson().toJson(categories));
+        Call<List<Product>> call = service.fetchCategories();
+        List<Product>  products= call.execute().body();
+        assertNotNull(products);
+        assertFalse(products.isEmpty());
+        System.out.println(new Gson().toJson(products));
     }
 
     @Test

@@ -6,29 +6,8 @@ import java.io.Serializable;
 
 public class Product implements Serializable {
     private Integer id;
-    private String title;
-    private Float price;
-    @SerializedName("image")
-    private String imageUrl;
-    private Rating rating;
-    private String description;
-    private String category;
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
+    private String name;
+    private String image;
 
     public Integer getId() {
         return id;
@@ -38,35 +17,19 @@ public class Product implements Serializable {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Float getPrice() {
-        return price;
+    public String getImage() {
+        return image;
     }
 
-    public void setPrice(Float price) {
-        this.price = price;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public Rating getRating() {
-        return rating;
-    }
-
-    public void setRating(Rating rating) {
-        this.rating = rating;
+    public void setImage(String image) {
+        this.image = image;
     }
 }
