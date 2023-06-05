@@ -19,7 +19,7 @@ import retrofit2.Response;
 
 public class CartActivity extends BaseActivity {
     private ActivityCartBinding binding;
-     private List<CartProduct> cartProducts = new ArrayList<>();
+    private List<CartProduct> cartProducts = new ArrayList<>();
     private CartsAdapter adapter;
 
     @Override
@@ -34,11 +34,11 @@ public class CartActivity extends BaseActivity {
     }
 
     private void getApi(int cartId) {
-        Call<Cart>  call = service.getCartItems(cartId);
+        Call<Cart> call = service.getCartItems(cartId);
         call.enqueue(new Callback<Cart>() {
             @Override
             public void onResponse(Call<Cart> call, Response<Cart> response) {
-                Toast.makeText(CartActivity.this, "success"+ response.body(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(CartActivity.this, "success" + response.body(), Toast.LENGTH_SHORT).show();
                 adapter.setData(response.body().getProducts());
             }
 

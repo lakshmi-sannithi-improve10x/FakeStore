@@ -6,7 +6,7 @@ import java.util.List;
 public class Cart {
     private Integer id;
     private Integer userId;
-    private   List<CartProduct> products;
+    private List<CartProduct> products;
 
     public Integer getId() {
         return id;

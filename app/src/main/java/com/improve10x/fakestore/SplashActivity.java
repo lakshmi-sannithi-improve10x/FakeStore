@@ -9,15 +9,16 @@ import android.os.Handler;
 import com.improve10x.fakestore.category.CategoriesActivity;
 
 public class SplashActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-       super.onCreate(savedInstanceState);
-       setContentView(R.layout.activity_splash);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_splash);
         getSupportActionBar().hide();
         Handler handler = new Handler();
         handler.postDelayed(() -> {
             Intent intent = new Intent(this, CategoriesActivity.class);
-           startActivity(intent);
-       },2000);
+            startActivity(intent);
+        }, 2000);
     }
 }

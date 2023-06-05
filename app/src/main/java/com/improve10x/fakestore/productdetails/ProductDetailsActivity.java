@@ -14,7 +14,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ProductDetailsActivity extends BaseActivity {
-   private ActivityProductDetailsBinding binding;
+    private ActivityProductDetailsBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,7 @@ public class ProductDetailsActivity extends BaseActivity {
         getSupportActionBar().setTitle("ProductDetails");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Intent intent = getIntent();
-         int id = intent.getIntExtra("id", 0);
+        int id = intent.getIntExtra("id", 0);
         getProductDetails(id);
     }
 
@@ -34,10 +34,10 @@ public class ProductDetailsActivity extends BaseActivity {
             @Override
             public void onResponse(Call<Product> call, Response<Product> response) {
                 Product product = response.body();
-               binding.titleTxt.setText(product.getTitle());
-               // binding.ratingRb.setRating(product.getRating().getRate());
-               // binding.rateTxt.setText(String.valueOf(product.getRating().getRate()));
-               // binding.countTxt.setText(String.valueOf(product.getRating().getCount()));
+                binding.titleTxt.setText(product.getTitle());
+                // binding.ratingRb.setRating(product.getRating().getRate());
+                // binding.rateTxt.setText(String.valueOf(product.getRating().getRate()));
+                // binding.countTxt.setText(String.valueOf(product.getRating().getCount()));
                 binding.descriptionTxt.setText(product.getDescription());
                 binding.priceTxt.setText(String.valueOf(product.getPrice()));
                 Picasso.get().load(product.getImages().get(0)).into(binding.imageIv);

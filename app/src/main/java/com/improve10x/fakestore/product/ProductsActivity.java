@@ -42,7 +42,7 @@ public class ProductsActivity extends BaseActivity implements OnItemActionListen
         Call<List<Product>> call = service.getProducts(product.getId());
         call.enqueue(new Callback<List<Product>>() {
             @Override
-           public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                 adapter.updateData(response.body());
             }
 
